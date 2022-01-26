@@ -1,6 +1,9 @@
 const canvas = document.getElementById("jsCanvas");
 const ctx = canvas.getContext("2d");
 
+canvas.width = document.getElementsByClassName("canvas")[0].offsetWidth;
+canvas.height =document.getElementsByClassName("canvas")[0].offsetHeight;
+
 ctx.strokeStyle = "#2c2c2c";
 ctx.lineWidth = 2.5;
 
@@ -18,15 +21,18 @@ function onMouseMove(event) {
     const y = event.offsetY;
     if(!painting) {
         ctx.beginPath();
-        ctx.moveTo(x, y);
+        ctx.moveTo(x,y);
+    }else {
+        ctx.lineTo(x,y);
+        ctx.stroke();
     }
 }
 function onMouseDown(event) {
     painting = true;
 }
-function onMouseUp(event) {
-    stopPainting();
-}
+// function onMouseUp(event) {
+//     stopPainting();
+// }
 // function onMouseLeave(event) {
 //     stopPainting();
 // }
